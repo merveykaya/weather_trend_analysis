@@ -1,4 +1,3 @@
-# Weather Trends
 
 ## Join Database tables
 
@@ -1290,10 +1289,4 @@ plt.show()
 
     
 ![png](output_30_0.png)
-    
-
-
-
-```python
-
-```
+  
