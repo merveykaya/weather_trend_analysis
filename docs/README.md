@@ -1,15 +1,76 @@
-# Exploring Weather Trends 
+## 1. Import Libraries
+To load new `pip` package from https://pypi.org, run the following line. `!pip install <package_name>`. You need to validate packages. Otherwise your environment may be infected with a virus. 
 
-## Join Database tables
 
-- `city_data`
-- `global_data`
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+```
 
-### <h3 align="center" id="heading">Data Model</h3>
-| year | country | city | avg_temp_city | avg_temp_global |
-|------|---------|------|---------------|-----------------|
-| INT  | CHAR    | CHAR | ENUM          | ENUM            |
+## Data Model
 
+There are 3 datasets exists:
+* **city_list**: This contains a list of cities and countries in the database. Look through them in order to find the city nearest to you.
+* **city_data**: This contains the average temperatures for each city by year (ºC).
+* **global_data**: This contains the average global temperatures by year (ºC).
+
+### ER Diagram
+
+
+```python
+er_diagram = {'year': ['INT'], 'country': ['CHAR'], 'city': ['CHAR'], 'avg_temp_city': ['ENUM'], 'avg_temp_global': ['ENUM']}
+er_diagram = pd.DataFrame(data=er_diagram)
+```
+
+
+```python
+er_diagram
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>country</th>
+      <th>city</th>
+      <th>avg_temp_city</th>
+      <th>avg_temp_global</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>INT</td>
+      <td>CHAR</td>
+      <td>CHAR</td>
+      <td>ENUM</td>
+      <td>ENUM</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+### SQL Statement
 ```sql
 -- RENAME column name from global_data, city_data
 ALTER TABLE city_data
@@ -24,20 +85,7 @@ INNER JOIN global_data ON city_data.year=global_data.year ORDER BY city_data.yea
 ```
 
 
-## 1. Import Libraries
-To load new `pip` package from https://pypi.org, run the following line. `!pip install <package_name>`. You need to validate packages. Otherwise your environment may be infected with a virus. 
-
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-```
-
 ## 2. Extract
-There are 3 datasets exists:
-* **city_list**: This contains a list of cities and countries in the database. Look through them in order to find the city nearest to you.
-* **city_data**: This contains the average temperatures for each city by year (ºC).
-* **global_data**: This contains the average global temperatures by year (ºC).
 
 I used pandas with `read_csv` function to extract csv to dataframe. Prefered to plot with `matplotlib`
 * **cum_sum**: Cumulative summary of global temperature
@@ -496,7 +544,7 @@ plt.show()
 
 
     
-![png](output_15_0.png)
+![png](output_17_0.png)
     
 
 
@@ -662,7 +710,7 @@ plt.show()
 
 
     
-![png](output_20_0.png)
+![png](output_22_0.png)
     
 
 
@@ -978,7 +1026,7 @@ plt.show()
 
 
     
-![png](output_25_0.png)
+![png](output_27_0.png)
     
 
 
@@ -1294,7 +1342,7 @@ plt.show()
 
 
     
-![png](output_30_0.png)
+![png](output_32_0.png)
     
 
 
