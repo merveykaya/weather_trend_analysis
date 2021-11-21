@@ -5,7 +5,7 @@
 - `city_data`
 - `global_data`
 
-### <h3 align="center" id="heading">Data Model</h3>
+### Data Model
 | year | country | city | avg_temp_city | avg_temp_global |
 |------|---------|------|---------------|-----------------|
 | INT  | CHAR    | CHAR | ENUM          | ENUM            |
