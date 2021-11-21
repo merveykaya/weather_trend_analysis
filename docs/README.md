@@ -1,10 +1,11 @@
+# Exploring Weather Trends 
 
 ## Join Database tables
 
 - `city_data`
 - `global_data`
 
-### Data Model
+### <h3 align="center" id="heading">Data Model</h3>
 | year | country | city | avg_temp_city | avg_temp_global |
 |------|---------|------|---------------|-----------------|
 | INT  | CHAR    | CHAR | ENUM          | ENUM            |
@@ -33,6 +34,11 @@ import matplotlib.pyplot as plt
 ```
 
 ## 2. Extract
+There are 3 datasets exists:
+* **city_list**: This contains a list of cities and countries in the database. Look through them in order to find the city nearest to you.
+* **city_data**: This contains the average temperatures for each city by year (ºC).
+* **global_data**: This contains the average global temperatures by year (ºC).
+
 I used pandas with `read_csv` function to extract csv to dataframe. Prefered to plot with `matplotlib`
 * **cum_sum**: Cumulative summary of global temperature
 * **count**: Indicates to nr. of years
@@ -40,7 +46,7 @@ I used pandas with `read_csv` function to extract csv to dataframe. Prefered to 
 
 
 ```python
-df = pd.read_csv("data/dataset.csv")
+df = pd.read_csv("../data/dataset.csv")
 df
 ```
 
@@ -309,6 +315,8 @@ df_ams
 
 ### Moving Average
 
+Moving average, i.e. rolling average, is used for calculating averages of window groups indeed having a smoother line to visualise trends better rather than seasonal effects.
+
 
 ```python
 year = df_ams['year']
@@ -473,14 +481,14 @@ df_ams
 
 ## 4. Visualisation
 
-Definition of done...
+The line is the best chart to observe a time series data. In this way, trends and movement directions can be clearly tracked. 
 
 
 ```python
 plt.plot(year, global_temp_ma, label="Global")
 plt.plot(year, ams_temp_ma, label="Amsterdam", color="red")
 plt.legend()
-plt.title( 'Global vs. Amsterdam Temperature Change')
+plt.title( 'Comparison of Temperature Changes')
 plt.xlabel ('Year')
 plt.ylabel('Moving Average in °C')
 plt.show()
@@ -492,11 +500,9 @@ plt.show()
     
 
 
-The graph shows the moving average of temperature changes in globe and Amsterdam, between 1750 and 2000. 
-According to the graph, the years 1750 to 1800 saw the MA of temperatures in globe and Amsterdam increase and decrease by approximately the same directions.
-However, when global MAs reflect an overall increasing trend expect for middle 1800s, Amsterdam MAs has quick and sharp up and downs compared to global ones. 
-Also, it’s clearly seen that in Amsterdam, MA of temperatures are always above the global rates expect for the early 1800s. So that, Amsterdam is hotter compared to the global average. 
-As overall, the world consistently getting hotter since the late 1850s.
+*The graph shows the moving average of temperature changes in globe and Amsterdam, between 1750 and 2013. 
+According to the graph, the years 1750 to 1800 saw the MA of temperatures in globe and Amsterdam increase and decrease by approximately the same directions. However, when global MAs reflect an overall increasing trend except for middle 1800s, Amsterdam MAs has quick and sharp up and downs compared to global ones. Also, it’s clearly seen that in Amsterdam, MA of temperatures are always above the global rates expect for the early 1800s. So that, Amsterdam is hotter compared to the global average. 
+As overall, the world consistently getting hotter since the late 1850s.*
 
 
 ```python
@@ -648,7 +654,7 @@ plt.plot(year, global_temp_ma, label="Global")
 plt.plot(year, berlin_temp_ma, label="Berlin", color="red")
 plt.plot(year, ams_temp_ma, label="Amsterdam", color="purple")
 plt.legend()
-plt.title( 'Global vs. Amsterdam Temperature Change')
+plt.title( 'Comparison of Temperature Changes')
 plt.xlabel ('Year')
 plt.ylabel('Moving Average in °C')
 plt.show()
@@ -964,7 +970,7 @@ plt.plot(year, berlin_temp_ma, label="Berlin", color="red")
 plt.plot(year, ams_temp_ma, label="Amsterdam", color="purple")
 plt.plot(year, paris_temp_ma, label="Paris", color="green")
 plt.legend()
-plt.title( 'Global vs. Amsterdam Temperature Change')
+plt.title( 'Comparison of Temperature Changes')
 plt.xlabel ('Year')
 plt.ylabel('Moving Average in °C')
 plt.show()
@@ -1289,4 +1295,9 @@ plt.show()
 
     
 ![png](output_30_0.png)
-  
+    
+
+
+*The Comparison of Temperature Changes graph displays 5 rolling averages as Istanbul, Berlin, Amsterdam, Paris and Global.
+As Istanbul is the hottest city, Paris follows her. Althoug, Berlin is colder than Amsterdam, they is a strong pozitif correlation between them.*
+
